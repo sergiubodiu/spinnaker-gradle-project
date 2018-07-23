@@ -1,0 +1,44 @@
+ext {
+
+  springBoot = "1.5.10.RELEASE"
+  kork = "1.124.1"
+  jackson = "2.9.2"
+  okhttp = "2.7.0"
+  frigga = "0.18.0"
+  jedis = "2.9.0"
+  retrofit = "1.9.0"
+}
+
+dependencies {
+  testCompile "org.springframework.boot:spring-boot-starter-test:$springBoot"
+  testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
+  testCompile "org.spockframework:spock-spring:1.1-groovy-2.4"
+  testCompile "cglib:cglib-nodep:3.2.0"
+  testCompile "org.objenesis:objenesis:2.5.1"
+  testCompile "com.squareup.retrofit:retrofit-mock:$retrofit"
+  testCompile "com.github.tomakehurst:wiremock:2.15.0"
+
+  compile "com.netflix.spinnaker.orca:orca-core:6.44.1"
+  compile "com.netflix.spinnaker.orca:orca-retrofit:6.44.1"
+  compile "com.netflix.spinnaker.kork:kork-artifacts:$kork"
+  compile "com.netflix.spinnaker.kork:kork-web:$kork"
+  compile "com.netflix.spinnaker.kork:kork-swagger:$kork"
+  compile "com.netflix.spectator:spectator-reg-metrics3:0.57.1"
+  compile "net.logstash.logback:logstash-logback-encoder:4.11"
+
+  compile "com.squareup.retrofit:retrofit:$retrofit"
+  compile "com.squareup.retrofit:converter-jackson:$retrofit"
+  compile "com.squareup.okhttp:okhttp:$okhttp"
+  compile "com.squareup.okhttp:okhttp-urlconnection:$okhttp"
+  compile "com.squareup.okhttp:okhttp-apache:$okhttp"
+
+  compile "com.fasterxml.jackson.core:jackson-core:$jackson"
+  compile "com.fasterxml.jackson.core:jackson-databind:$jackson"
+  compile "com.fasterxml.jackson.core:jackson-annotations:$jackson"
+  compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jackson"
+  compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson"
+
+  compile "org.apache.commons:commons-lang3:3.7"
+  compile "de.huxhorn.sulky:de.huxhorn.sulky.ulid:8.1.1"
+
+}
