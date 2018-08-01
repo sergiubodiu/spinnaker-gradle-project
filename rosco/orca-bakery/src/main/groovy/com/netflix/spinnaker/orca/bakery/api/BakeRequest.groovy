@@ -33,8 +33,8 @@ import groovy.transform.Immutable
 @Immutable(copyWith = true)
 @CompileStatic
 class BakeRequest {
-  private static final PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy lowerCaseWithUnderscoresStrategy =
-    new PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy()
+  private static final PropertyNamingStrategy.SnakeCaseStrategy lowerCaseWithUnderscoresStrategy =
+    new PropertyNamingStrategy.SnakeCaseStrategy()
 
   static final Default = new BakeRequest(user: System.getProperty("user.name"),
                                          cloudProviderType: CloudProviderType.aws,
