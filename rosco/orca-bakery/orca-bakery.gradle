@@ -42,7 +42,4 @@ dependencies {
   compile "org.apache.commons:commons-lang3:3.7"
   compile "de.huxhorn.sulky:de.huxhorn.sulky.ulid:8.1.1"
 
-  compile("org.springframework.boot:spring-boot-starter-batch:$springBoot")
-  compile("org.hsqldb:hsqldb:2.4.0")
-
 }

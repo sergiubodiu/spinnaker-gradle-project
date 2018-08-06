@@ -1,0 +1,6 @@
+DROP TABLE instance IF EXISTS;
+
+CREATE TABLE instance  (
+    id BIGINT IDENTITY NOT NULL PRIMARY KEY,
+    name VARCHAR(20)
+);
