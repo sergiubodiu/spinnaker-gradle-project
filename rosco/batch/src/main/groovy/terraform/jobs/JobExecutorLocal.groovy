@@ -1,9 +1,7 @@
 package terraform.jobs
 
-import com.netflix.spectator.api.Registry
 import groovy.util.logging.Slf4j
 import org.apache.commons.exec.*
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import rx.Scheduler
 import rx.functions.Action0
@@ -18,9 +16,6 @@ class JobExecutorLocal implements JobExecutor {
 
   @Value('${terraform.jobs.local.timeoutMinutes:10}')
   long timeoutMinutes
-
-  @Autowired
-  Registry registry
 
   Scheduler scheduler = Schedulers.computation()
   Map<String, Map> jobIdToHandlerMap = new ConcurrentHashMap<String, Map>()

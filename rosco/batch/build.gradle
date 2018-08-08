@@ -4,7 +4,7 @@ buildscript {
   }
   ext {
     springBoot = "2.0.4.RELEASE"
-    mockitoVersion = '2.11.0'
+    mockitoVersion = "2.15.0"
     kork = "1.124.1"
     jackson = "2.9.2"
     okhttp = "2.7.0"
@@ -40,8 +40,13 @@ repositories {
 }
 
 dependencies {
-//  compile localGroovy() //Gradle 2.3 -> Groovy 2.3.11
+  compile localGroovy() //Gradle 2.3 -> Groovy 2.3.11
 
+  testCompile "org.springframework.boot:spring-boot-starter-test:$springBoot"
+  testCompile "org.mockito:mockito-core:$mockitoVersion"
+
+//  compile 'io.micrometer:micrometer-spring-legacy:latest.release'
+//  compile "org.springframework.cloud:spring-cloud-starter-netflix-spectator"
   compile "org.springframework.boot:spring-boot-starter-actuator"
   compile "org.springframework.boot:spring-boot-starter-web"
   compile "org.springframework.boot:spring-boot-starter-data-rest"
@@ -51,12 +56,5 @@ dependencies {
   compile "io.reactivex:rxjava:1.0.16"
   compile "org.apache.commons:commons-exec:1.3"
   compile "com.h2database:h2:1.4.197"
-  compile "org.codehaus.groovy:groovy-all:2.3.11"
-
-  testCompile "org.springframework.boot:spring-boot-starter-test"
-  testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
-  testCompile "org.spockframework:spock-spring:1.1-groovy-2.4"
-  testCompile group: 'junit', name: 'junit', version: '4.12'
-  testCompile "org.mockito:mockito-core:$mockitoVersion"
 
 }

@@ -6,17 +6,17 @@ import spock.lang.Specification
 class TerraformManifestSpec extends Specification implements TestDefaults {
   void "getLastBuild"() {
     setup:
-      def firstBuild = new TerraformManifest.TerraformBuild(packerRunUuid: UUID.randomUUID().toString())
-      def secondBuild = new TerraformManifest.TerraformBuild(packerRunUuid: UUID.randomUUID().toString())
+      def firstBuild = new TerraformBuild(terraformRunUuid: UUID.randomUUID().toString())
+      def secondBuild = new TerraformBuild(terraformRunUuid: UUID.randomUUID().toString())
     TerraformManifest manifest
 
     when:
-      manifest = new TerraformManifest(builds: [firstBuild, secondBuild], lastRunUuid: firstBuild.getPackerRunUuid())
+      manifest = new TerraformManifest(builds: [firstBuild, secondBuild], lastRunUuid: firstBuild.getTerraformRunUuid())
     then:
       manifest.getLastBuild() == firstBuild
 
     when:
-      manifest = new TerraformManifest(builds: [firstBuild, secondBuild], lastRunUuid: secondBuild.getPackerRunUuid())
+      manifest = new TerraformManifest(builds: [firstBuild, secondBuild], lastRunUuid: secondBuild.getTerraformRunUuid())
     then:
       manifest.getLastBuild() == secondBuild
 

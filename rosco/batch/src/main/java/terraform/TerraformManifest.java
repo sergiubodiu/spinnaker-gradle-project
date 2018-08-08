@@ -16,7 +16,7 @@ public class TerraformManifest {
 
   public TerraformBuild getLastBuild() {
     return builds.stream()
-      .filter(build -> build.terraformRunUuid.equals(lastRunUuid))
+      .filter(build -> build.getTerraformRunUuid().equals(lastRunUuid))
       .findFirst()
       .orElseThrow(() -> new IllegalStateException("Could not find most recent build in terraform manifest"));
   }
@@ -60,71 +60,4 @@ public class TerraformManifest {
     this.lastRunUuid = lastRunUuid;
   }
 
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-  public static class TerraformBuild {
-    private String name;
-    private String builderType;
-    private String artifactId;
-    private String terraformRunUuid;
-
-    @Override
-    public String toString() {
-      return "TerraformBuild{" +
-              "name='" + name + '\'' +
-              ", builderType='" + builderType + '\'' +
-              ", artifactId='" + artifactId + '\'' +
-              ", terraformRunUuid='" + terraformRunUuid + '\'' +
-              '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      TerraformBuild that = (TerraformBuild) o;
-      return Objects.equals(name, that.name) &&
-              Objects.equals(builderType, that.builderType) &&
-              Objects.equals(artifactId, that.artifactId) &&
-              Objects.equals(terraformRunUuid, that.terraformRunUuid);
-    }
-
-    @Override
-    public int hashCode() {
-
-      return Objects.hash(name, builderType, artifactId, terraformRunUuid);
-    }
-
-    public String getName() {
-      return name;
-    }
-
-    public void setName(String name) {
-      this.name = name;
-    }
-
-    public String getBuilderType() {
-      return builderType;
-    }
-
-    public void setBuilderType(String builderType) {
-      this.builderType = builderType;
-    }
-
-    public String getArtifactId() {
-      return artifactId;
-    }
-
-    public void setArtifactId(String artifactId) {
-      this.artifactId = artifactId;
-    }
-
-    public String getTerraformRunUuid() {
-      return terraformRunUuid;
-    }
-
-    public void setTerraformRunUuid(String terraformRunUuid) {
-      this.terraformRunUuid = terraformRunUuid;
-    }
-  }
 }

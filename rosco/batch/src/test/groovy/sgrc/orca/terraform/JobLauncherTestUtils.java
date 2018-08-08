@@ -52,9 +52,6 @@ public class JobLauncherTestUtils {
 
 	private static final long JOB_PARAMETER_MAXIMUM = 1000000;
 
-	/** Logger */
-	protected final Logger logger = LoggerFactory.getLogger(getClass());
-
 	private JobLauncher jobLauncher;
 
 	private Job job;

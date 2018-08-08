@@ -16,7 +16,6 @@
 
 package terraform;
 
-import terraform.TerraformManifest.TerraformBuild;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedInputStream;

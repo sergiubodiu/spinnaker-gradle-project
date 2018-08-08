@@ -1,5 +1,16 @@
-ext {
+buildscript {
+  ext {
+    springBoot = "1.5.10.RELEASE"
     springConfigLocation = System.getProperty('spring.config.location', "${System.getProperty('user.home')}/.spinnaker/")
+  }
+
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBoot"
+    classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+  }
 }
 
 apply plugin: "org.springframework.boot"
@@ -20,7 +31,13 @@ configurations.all {
 }
 
 dependencies {
+  testCompile "org.springframework.boot:spring-boot-starter-test:$springBoot"
   compile project(":rosco-core")
+
+  compile "com.netflix.spinnaker.kork:kork-artifacts:$kork"
+  compile "com.netflix.spinnaker.kork:kork-web:$kork"
+  compile "com.netflix.spinnaker.kork:kork-swagger:$kork"
+  compile "com.netflix.spectator:spectator-reg-metrics3:0.57.1"
   compile "org.springframework.boot:spring-boot-starter-actuator"
   compile "org.springframework.boot:spring-boot-starter-web"
   compile "org.springframework.boot:spring-boot-starter-data-rest"
@@ -31,4 +48,10 @@ dependencies {
 
 tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
     systemProperty('spring.config.location', project.springConfigLocation)
+}
+
+tasks.withType(JavaExec) {
+  if (System.getProperty('DEBUG', 'false') == 'true') {
+    jvmArgs '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8187'
+  }
 }
