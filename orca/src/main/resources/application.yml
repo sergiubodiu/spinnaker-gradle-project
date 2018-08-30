@@ -1,0 +1,94 @@
+management:
+  security:
+    enabled: false
+spring:
+  batch:
+    job:
+      enabled: false
+  datasource:
+    initialize: true
+    platform: h2
+    url: jdbc:h2:mem:outputfiles;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: null
+    driverClassName: org.h2.Driver
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2.console:
+    enabled: true
+    path: /console
+    settings:
+      trace: false
+      web-allow-others: true
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+logging:
+   level:
+      vportfolio.batch: DEBUG
+      org.springframework.web.servlet.DispatcherServlet: DEBUG
+#
+pricing-engine:
+  file:
+    annual-expected-loss-by-risk-groups: EL-annual-rg.txt
+    contract-model-status: contract-model-status.txt
+    contract-expected-loss-by-risk-groups: EL-contract-rg.txt
+    iteration-expected-loss-by-risk-groups: iter-event-loss-portfolio.txt
+    portfolio-statistics: portfolio-stats.txt
+    portfolio-statistics-rip: rip-portfolio-stats.txt
+    portfolio-statistics-no-rip: norip-portfolio-stats.txt
+    pricing-output: pricing-output-partial.xml
+    ETIVmodeledFlagFile: contract-ETIV-model.txt
+    iterEventTIVFileForPortfolio: iter-event-tiv-portfolio.txt
+    XMLOutFile: pricing-output.xml
+    probability:
+      name: probs.txt
+      values: 0.5,0.75,0.8,0.9,0.95,0.96,0.96667,0.98,0.99,0.995,0.996,0.998,0.999,0.9998,0.9999,1.0
+    layer:
+      name: layers.txt
+    instruction:
+      name: instruction-compile-portfolio.txt
+      dataType: adjusted
+      nEventsForETIV: 100
+      numIter: 100000
+      includeAuthorizedContractFactor: 1.0
+      function: pricing3
+      subFunction: compilePortfolio
+      analyticsFlag: N
+      byZone: T
+      fixRandomSeed: T
+      getStats: T
+      includeFullRip: T
+      includeETIV: F
+      includeReinstatePrem: T
+      readPayoffData: T
+      savePayoffData: F
+      scalePayoffData: T
+      useBinaryFile: F
+      verticalDisplay: F
+  path:
+    analysisRoot: C:\Pricing\Analysis
+    pathToLayerPayoffIterEventFiles: C:\Pricing\Payoff\
+  model:
+    version:
+      AIR: 5
+      EQE: 413
+      RMS: 17
+      VALIDUS: 17
+      VRISC: 17
+server:
+  port: 8090
+swagger:
+  title: vPortfolio Pricing Rest API
+  description: Portfolio Pricing Rest API
+  version: 1.0
+  terms-of-service-url: Terms of Service URL
+  license:
+    type-version: License Type & Version
+    url: License Url
+  contact:
+    name: Validus Research
+    url: http://www.validusresearch.com
+    email: test@validusresearch.com

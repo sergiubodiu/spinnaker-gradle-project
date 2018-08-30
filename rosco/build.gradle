@@ -3,6 +3,7 @@ buildscript {
     jcenter()
   }
   ext {
+    springBoot = "1.5.10.RELEASE"
     kork = "1.124.1"
     jackson = "2.9.2"
     okhttp = "2.7.0"
@@ -12,6 +13,8 @@ buildscript {
   }
 
   dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBoot"
+    classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
     classpath "com.netflix.nebula:gradle-ospackage-plugin:4.9.3"
   }
 }
@@ -46,12 +49,19 @@ subprojects {
   targetCompatibility = 1.8
 
   dependencies {
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBoot"
     testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
     testCompile "org.spockframework:spock-spring:1.1-groovy-2.4"
     testCompile "cglib:cglib-nodep:3.2.0"
     testCompile "org.objenesis:objenesis:2.5.1"
     testCompile "com.squareup.retrofit:retrofit-mock:$retrofit"
 
+    compile "org.springframework.boot:spring-boot-autoconfigure:$springBoot"
+    compile "ch.qos.logback:logback-classic:1.2.3"
+    compile "com.netflix.spinnaker.kork:kork-artifacts:$kork"
+    compile "com.netflix.spinnaker.kork:kork-web:$kork"
+    compile "com.netflix.spinnaker.kork:kork-swagger:$kork"
+    compile "com.netflix.spectator:spectator-reg-metrics3:0.57.1"
     compile "ch.qos.logback:logback-classic:1.2.3"
     compile "net.logstash.logback:logstash-logback-encoder:4.11"
 

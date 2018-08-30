@@ -3,23 +3,11 @@ buildscript {
     springBoot = "1.5.10.RELEASE"
     springConfigLocation = System.getProperty('spring.config.location', "${System.getProperty('user.home')}/.spinnaker/")
   }
-
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBoot"
-    classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
-  }
 }
-
 apply plugin: "org.springframework.boot"
 apply plugin: "io.spring.dependency-management"
 apply plugin: "nebula.ospackage"
 
-repositories {
-    jcenter()
-}
 
 bootRepackage {
     mainClass = 'com.netflix.spinnaker.rosco.Main'
@@ -31,7 +19,6 @@ configurations.all {
 }
 
 dependencies {
-  testCompile "org.springframework.boot:spring-boot-starter-test:$springBoot"
   compile project(":rosco-core")
 
   compile "com.netflix.spinnaker.kork:kork-artifacts:$kork"

@@ -1,0 +1,2 @@
+contractId	Modeled status	Expected Loss	Path
+1490710	modeled	551553	C:\Pricing\Payoff\adjusted/V17/iter-event-for-payoff-contract-1490710.txt
